@@ -27,10 +27,8 @@ const slide_p = document.querySelector("p")
 
 // Evenement au Clique des fléches (event listene)
 
-left_arrow.addEventListener("click", function() {
-  console.log("Flèche gauche cliquée !");
-});
-right_arrow.addEventListener("click",  slide_next) // appelle la fonction correspondante à chaque fleche (slide back/slide next)
+left_arrow.addEventListener("click", slide_back ) //  appelle la fonction correspondante slide back
+right_arrow.addEventListener("click",  slide_next) // appelle la fonction correspondante slide next
   
 
 
@@ -42,7 +40,7 @@ function carrousel_update(count) {
 	slide_img.src = "./assets/images/slideshow/" + slides[count].image
 	slide_p.innerHTML = slides[count].tagLine
 }
-// Fonction flece suivant
+// Fonction fleche suivant
 
 function slide_next() {
 	if (count < slides.length - 1) {
@@ -50,6 +48,17 @@ function slide_next() {
 	} 
 	else {
   	count = 0;
+	}
+	carrousel_update(count)
+	console.log(count)
+}
+// Fonction fleche précédant 
+function slide_back() {
+	if (count === 0) {
+		count = slides.length -1
+	} 
+	else {
+		count = count-1
 	}
 	carrousel_update(count)
 	console.log(count)

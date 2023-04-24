@@ -21,13 +21,36 @@ const slides = [
 const left_arrow = document.querySelector(".arrow_left");
 const right_arrow = document.querySelector(".arrow_right");
 
-// Evenement auc Clique des fléches (event listene)
+// Image et texte slide carrousel
+const slide_img = document.querySelector(".banner-img")
+const slide_p = document.querySelector("p")
+
+// Evenement au Clique des fléches (event listene)
 
 left_arrow.addEventListener("click", function() {
   console.log("Flèche gauche cliquée !");
 });
-right_arrow.addEventListener("click", function() {
-  console.log("Flèche droite cliquée !");
-});
+right_arrow.addEventListener("click",  slide_next) // appelle la fonction correspondante à chaque fleche (slide back/slide next)
+  
 
 
+// Variable pour suivre l'index des slide du carrousel
+let count = 0
+
+//  fonction changement de slide carrousel
+function carrousel_update(count) {
+	slide_img.src = "./assets/images/slideshow/" + slides[count].image
+	slide_p.innerHTML = slides[count].tagLine
+}
+// Fonction flece suivant
+
+function slide_next() {
+	if (count < slides.length - 1) {
+  	count++;
+	} 
+	else {
+  	count = 0;
+	}
+	carrousel_update(count)
+	console.log(count)
+}

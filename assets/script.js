@@ -43,7 +43,7 @@ for (let i = 0; i < slides.length; i++) {
 		// ajoute le dot a la div conteneur des dot dans le HTML en tant que enfant 
 	dots_div.appendChild(dot)
 		// fait appelle à la fonction Carrousel_update pour rendre les dots cliquable
-	dot.addEventListener('click', () => {Carrousel_update(count, i)})
+	dot.addEventListener('click',Carrousel_update)
 }
 // Sélection points de navigation
 const dots = document.querySelectorAll(".dot")
@@ -72,7 +72,7 @@ function Slide_next() {
 		count_add = 0;
 	}
 	Carrousel_update(count, count_add )
-	console.log(count )
+	 console.log(count )
 }
 // Fonction fleche précédant 
 
@@ -84,4 +84,5 @@ function Slide_back() {
 		count_back = count-1
 	}
 	Carrousel_update(count,count_back)
+
 }

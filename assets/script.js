@@ -45,6 +45,9 @@ for (let i = 0; i < slides.length; i++) {
 		// fait appelle à la fonction Carrousel_update pour rendre les dots cliquable
 	dot.addEventListener('click', () => {Carrousel_update(count, i)})
 }
+// Sélection points de navigation
+const dots = document.querySelectorAll(".dot")
+dots[0].classList.add("dot_selected")
 
 // Variable pour suivre l'index des slide du carrousel
 let count = 0

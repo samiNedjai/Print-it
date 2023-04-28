@@ -1,3 +1,4 @@
+// Tableau slides
 const slides = [
 	{
 		"image":"slide1.jpg",
@@ -27,39 +28,57 @@ const slide_p = document.querySelector("p")
 
 // Evenement au Clique des fléches (event listene)
 
-left_arrow.addEventListener("click", slide_back ) //  appelle la fonction correspondante slide back
-right_arrow.addEventListener("click",  slide_next) // appelle la fonction correspondante slide next
-  
-
+left_arrow.addEventListener("click", Slide_back ) //  appelle la fonction correspondante slide back
+right_arrow.addEventListener("click",  Slide_next) // appelle la fonction correspondante slide next
+ 
+// division des dots
+const dots_div = document.querySelector(".dots")
+// Boucle qui crée les dots ("i" est une variable choisie par convention 
+// pour représenter l'indice ou l'index d'un élément dans un tableau)
+for (let i = 0; i < slides.length; i++) {
+		// crée un point de navigatioçn "dot"
+	const dot = document.createElement("div") 
+		// applique les proprieter CSS au "dot"
+	dot.className = "dot"
+		// ajoute le dot a la div conteneur des dot dans le HTML en tant que enfant 
+	dots_div.appendChild(dot)
+		// fait appelle à la fonction Carrousel_update pour rendre les dots cliquable
+	dot.addEventListener('click', () => {Carrousel_update(count, i)})
+}
 
 // Variable pour suivre l'index des slide du carrousel
 let count = 0
 
 //  fonction changement de slide carrousel
-function carrousel_update(count) {
-	slide_img.src = "./assets/images/slideshow/" + slides[count].image
-	slide_p.innerHTML = slides[count].tagLine
+function Carrousel_update(count_back,count_add) {
+	count = count_add
+	slide_img.src = `./assets/images/slideshow/${slides[count_add].image}`
+	slide_p.innerHTML = slides[count_add].tagLine
+	dots[count_back].classList.remove("dot_selected")
+	dots[count_add].classList.add("dot_selected")
 }
+
 // Fonction fleche suivant
 
-function slide_next() {
+function Slide_next() {
+	// let count_add;
 	if (count < slides.length - 1) {
-  	count++;
+		count_add = count + 1;
 	} 
 	else {
-  	count = 0;
+		count_add = 0;
 	}
-	carrousel_update(count)
-	console.log(count)
+	Carrousel_update(count, count_add )
+	console.log(count )
 }
 // Fonction fleche précédant 
-function slide_back() {
+
+function Slide_back() {
 	if (count === 0) {
-		count = slides.length -1
+		count_back = slides.length -1
 	} 
 	else {
-		count = count-1
+		count_back = count-1
 	}
-	carrousel_update(count)
-	console.log(count)
+	Carrousel_update(count,count_back)
 }

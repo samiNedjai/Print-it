@@ -21,7 +21,6 @@ const slides = [
 // sélectionner l'élement
 const left_arrow = document.querySelector(".arrow_left");
 const right_arrow = document.querySelector(".arrow_right");
-
 // Image et texte slide carrousel
 const slide_img = document.querySelector(".banner-img")
 const slide_p = document.querySelector("p")
